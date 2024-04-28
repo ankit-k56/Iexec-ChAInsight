@@ -53,7 +53,7 @@ export default function Home() {
         <SelectContent>
           <SelectGroup>
             <SelectLabel>Select the crypto</SelectLabel>
-            <SelectItem value="Ethereum">Etherium</SelectItem>
+            <SelectItem value="Ethereum">Ethereum</SelectItem>
             <SelectItem value="Bitcoin">Bitcoin</SelectItem>
             <SelectItem value="Dogecoin">Dogecoin</SelectItem>
             <SelectItem value="Solana">Solana</SelectItem>
