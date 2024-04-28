@@ -3,12 +3,13 @@ import React, { useState, useEffect } from "react";
 import Progressbar from "@/components/Progressbar";
 import { toast } from "sonner";
 import Link from "next/link";
+import ReactLoading from "react-loading";
 
 type PartyDict = { [key: string]: number };
 
 const Page = () => {
   const [partyDict, setPartyDict] = useState<PartyDict>({});
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const parseInputString = (inputString: string) => {
     const partyEntries = inputString.split(",");
@@ -51,7 +52,7 @@ const Page = () => {
   if (isLoading) {
     return (
       <div className="w-screen  flex items-center justify-center text-xs">
-        Loading...
+        <ReactLoading type={"cylon"} color={"green"} height={30} width={50} />
       </div>
     );
   }
@@ -59,6 +60,16 @@ const Page = () => {
   return (
     <div className="flex flex-col gap-3 items-center my-8">
       <div className="flex w-[500px] border-slate-200 border-2 mx-auto p-8 rounded-lg flex-col gap-7">
+        {isLoading && (
+          <div className="w-screen  flex items-center justify-center text-xs">
+            <ReactLoading
+              type={"cylon"}
+              color={"green"}
+              height={30}
+              width={50}
+            />
+          </div>
+        )}
         {Object.entries(partyDict).map(([key, value]) => {
           return (
             <div

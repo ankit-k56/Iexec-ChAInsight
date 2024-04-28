@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Progressbar from "@/components/Progressbar";
 import { toast } from "sonner";
 import Link from "next/link";
+import ReactLoading from "react-loading";
 
 type PartyDict = { [key: string]: number };
 
@@ -49,7 +50,7 @@ const Page = () => {
   if (isLoading) {
     return (
       <div className="w-screen  flex items-center justify-center text-xs">
-        Loading...
+        <ReactLoading type={"cylon"} color={"green"} height={30} width={50} />
       </div>
     );
   }

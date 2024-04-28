@@ -1,22 +1,17 @@
 "use client";
 import React, { useState } from "react";
 import { usePathname } from "next/navigation";
-import path from "path";
 import MobileNav from "./MobileNav";
-import { IExecOracleFactory } from "@iexec/iexec-oracle-factory-wrapper";
 
-// instantiate
 const Navbar = () => {
   const pathname = usePathname();
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  // const web3Provider = (window as any).ethereum;
-  // const factory = new IExecOracleFactory(web3Provider);
 
   return (
     <nav className="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
       <MobileNav isVisible={isVisible} />
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
+        <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
           <img
             src="https://flowbite.com/docs/images/logo.svg"
             className="h-8"

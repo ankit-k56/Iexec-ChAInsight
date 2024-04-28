@@ -23,9 +23,6 @@ export function Selectcrypto() {
           <SelectItem value="Bitcoin">Bitcoin</SelectItem>
           <SelectItem value="Dogecoin">Dogecoin</SelectItem>
           <SelectItem value="Solana">Solana</SelectItem>
-
-          {/* <SelectItem value="grapes">Grapes</SelectItem>
-          <SelectItem value="pineapple">Pineapple</SelectItem> */}
         </SelectGroup>
       </SelectContent>
     </Select>

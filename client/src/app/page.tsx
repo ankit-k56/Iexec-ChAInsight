@@ -3,6 +3,8 @@ import Image from "next/image";
 import ReactSpeedometer from "react-d3-speedometer";
 import { Selectcrypto } from "@/components/Selectcrypto";
 import { useState, useEffect } from "react";
+import ReactLoading from "react-loading";
+
 import {
   Select,
   SelectContent,
@@ -16,6 +18,7 @@ import {
 export default function Home() {
   const [crypto, setCrypto] = useState<string>("Ethereum");
   const [val, setVal] = useState<number>(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchdata = async () => {
@@ -27,6 +30,8 @@ export default function Home() {
         setVal(parseInt(data.text));
       } catch (err) {
         console.log(err);
+      } finally {
+        setIsLoading(false);
       }
     };
     fetchdata();
@@ -38,8 +43,15 @@ export default function Home() {
   };
   if (crypto !== "Ethereum") {
     return (
-      <div className="w-screen text-center">
+      <div className="w-screen text-center py-20">
         <h1 className="text-xl">This page is under development</h1>
+      </div>
+    );
+  }
+  if (isLoading) {
+    return (
+      <div className="w-screen  flex items-center justify-center text-xs">
+        <ReactLoading type={"cylon"} color={"green"} height={30} width={50} />
       </div>
     );
   }
