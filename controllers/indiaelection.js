@@ -1,12 +1,12 @@
 import { factory } from "../utils/Iexecfactory.mjs";
 import { genAI } from "../utils/Aiprovider.mjs";
+import "dotenv/config";
 
 export const getIndiaElectionResult = async (req, res) => {
   try {
-    const newsData = await factory.readOracle(
-      "0xffbec0775b1c8a906fd3aad1128efc135a10ca479ec4ba3e1dea3ea5ec064fe5",
-      { dataType: "string" }
-    );
+    const newsData = await factory.readOracle(process.env.INDIA, {
+      dataType: "string",
+    });
     console.log(newsData);
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });

@@ -9,9 +9,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.post("/us", getUsElectionResult);
+app.get("/us", getUsElectionResult);
 app.get("/india", getIndiaElectionResult);
-app.get("/ethereum", getEthData);
+app.get("/eth", getEthData);
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
 });
