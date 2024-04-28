@@ -9,6 +9,9 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  return res.send("Ibuild Hackathon");
+});
 app.get("/us", getUsElectionResult);
 app.get("/india", getIndiaElectionResult);
 app.get("/eth", getEthData);

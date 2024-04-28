@@ -18,9 +18,9 @@ export const getUsElectionResult = async (req, res) => {
 
     console.log(text);
 
-    res.status(200).json({ text });
+    return res.status(200).json({ text });
   } catch (error) {
     console.log(error);
-    res.status(500).json({ message: "Something went wrong" });
+    return res.status(500).json({ message: "Something went wrong" });
   }
 };
