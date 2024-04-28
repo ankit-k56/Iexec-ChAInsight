@@ -17,7 +17,7 @@ export const getEthData = async (req, res) => {
     console.log(newsData);
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
-    const prompt = `Predict will the ethereum price go up or down in the next 24 hours? Also here is a recent news headline: ${newsData.value} use this data and your knowledge as well for prediction, Also tell on the scale of 1 to 100 what is its chances of going up or down. Return value above 50 if it is going up and below 50 if it is going down. Example 60 or 40. Just return the number`;
+    const prompt = `Predict will the ethereum price go up or down in the next 24 hours? Also here is a recent news headline: ${newsData.value} use this data and your knowledge as well for prediction, Also tell on the scale of -100 to 100 what is its chances of going up or down. Return value above 0 if it is going up and below 0 if it is going down. Example 60 or -40. Just return the number`;
     const result = await model.generateContent(prompt);
     // console.log(result);
     const response = await result.response;
