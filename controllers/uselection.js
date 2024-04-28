@@ -1,9 +1,15 @@
 import { factory } from "../utils/Iexecfactory.mjs";
 import { genAI } from "../utils/Aiprovider.mjs";
 import "dotenv/config";
+import { Redis } from "ioredis";
 
+const redis = new Redis(process.env.REDIS_URL);
 export const getUsElectionResult = async (req, res) => {
   try {
+    const val = await redis.get("usa");
+    if (val) {
+      return res.status(200).json({ text: val });
+    }
     const newsData = await factory.readOracle(process.env.USA, {
       dataType: "string",
     });
@@ -17,7 +23,7 @@ export const getUsElectionResult = async (req, res) => {
     const text = response.text();
 
     console.log(text);
-
+    await redis.set("usa", text);
     return res.status(200).json({ text });
   } catch (error) {
     console.log(error);
